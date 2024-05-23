@@ -1,7 +1,8 @@
-let userInput = document.getElementById("user-input").value
+let userInput = document.getElementById("user-input")
+
 let checkBtn = document.getElementById("check-btn")
 let clearBtn = document.getElementById("clear-btn")
-let output = document.getElementById("output").innerHTML
+let output = document.getElementById("results-div")
 
 function validitate(input) {
     let regex=/^(1\s?)?(\(\d{3}\)\s?\d{3}-|\d{3}\s?\d{3}\s?|\d{3}-\d{3}-)\d{4}$/g
@@ -9,18 +10,27 @@ function validitate(input) {
   }
   
 function numberValidity() {
-    if (userInput === "") {
+    let f = userInput.value
+    console.log(f)
+    if (f === "") {
+        console.log(userInput)
      alert("please provide a phone number")
     } else {
-        if (validitate(userInput)) {
-            output = `Invalid US number: ${userInput}`
+        if (validitate(f)) {
+           
+            output.innerHTML = `Valid US number: ${f}`
         } else {
-            output = `Valid US number: ${userInput}`
+            output.innerHTML = `Invalid US number: ${f}`
         }
     }
-    userInput=""
+    userInput.value="";
+    console.log("click")
+    
  }
 
- function clear() {
-    userInput=""
+ function clearb() {
+    console.log("clear")
+    output.innerHTML=""
+    userInput.value = ""
+    
  }
